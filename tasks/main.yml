@@ -1,6 +1,6 @@
 ---
 
-- include: multi_os.yml
+- import_tasks: multi_os.yml
 
 - include_tasks: RedHat.yml
   when: ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora'
