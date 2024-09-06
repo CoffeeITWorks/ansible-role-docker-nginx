@@ -65,6 +65,14 @@
   with_items: "{{ nginx_reverse_proxy_proxies_cloud_ssl }}"
   notify: 'restart-docker-nginx'
 
+- name: deploy reverse proxy onprem configurations ssl
+  template:
+    src: reverse-proxy-ssl-onprem.conf.j2
+    dest: "{{ nginx_reverse_proxy_config_directory }}/{{ item.config_name }}.conf"
+  with_items: "{{ nginx_reverse_proxy_proxies_onprem_ssl }}"
+  notify: 'restart-docker-nginx'
+
+
 - name: deploy custom conf files
   template:
     src: custom-config.conf.j2
